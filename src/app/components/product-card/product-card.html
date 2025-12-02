@@ -1,0 +1,33 @@
+<div class="flex flex-col gap-2 bg-white rounded-lg">
+  <div class="relative">
+    <img
+      [src]="product().image"
+      [alt]="product().title"
+      class="h-56 w-full object-cover object-center rounded-t-lg"
+    />
+    <div class="absolute top-2 right-2">
+      @if (product().stock) {
+      <div class="font-bold text-sm bg-green-500 px-4 rounded-full text-white">
+        {{ product().stock }} Left
+      </div>
+      } @else {
+      <div class="font-bold text-sm bg-red-500 text-white rounded-full px-4">Out of stock</div>
+      }
+    </div>
+  </div>
+  <div class="p-4 w-full flex flex-col gap-4">
+    <div>
+      <span>{{ product().title }}</span>
+    </div>
+    <div class="text-xl font-light">Rp. {{ product().price }}</div>
+
+    <div class="flex items-center justify-between w-full">
+      <button
+        (click)="cartService.addToCart(product())"
+        class="border cursor-pointer hover:bg-yellow-500 border-yellow-400 py-2 rounded-lg text-sm bg-yellow-400 text-white w-full"
+      >
+        Add To Cart
+      </button>
+    </div>
+  </div>
+</div>

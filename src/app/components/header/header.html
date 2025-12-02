@@ -5,27 +5,42 @@
         <img src="https://api.dicebear.com/9.x/pixel-art/svg" alt="gambar" class="size-16" />
       </div>
       <div class="flex gap-2 h-full">
-        <div class="group relative px-4 h-full flex items-center justify-center cursor-pointer">
-          <span class="h-full flex items-center justify-center font-bold text-yellow-400"
-            >Dashboard</span
+        @for (nav of navs; track $index) {
+        <div
+          [routerLink]="nav.path"
+          class="group relative px-4 h-full flex items-center justify-center cursor-pointer"
+        >
+          <span
+            [class]="
+              currentPath == nav.path
+                ? 'font-bold text-yellow-400'
+                : 'w-full flex items-center justify-center'
+            "
+            >{{ nav.label }}</span
           >
+          @if (currentPath==nav.path) {
           <span
             class="absolute bottom-0 h-0.5 bg-yellow-500 w-full left-0 transition-all duration-500"
           ></span>
-        </div>
-        <div class="group relative px-4 h-full flex items-center justify-center cursor-pointer">
-          <span class="h-full flex items-center justify-center">Products</span>
-
+          } @else {
           <span
             class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-yellow-500 group-hover:w-full group-hover:left-0 transition-all duration-500"
           >
           </span>
+          }
         </div>
+        }
       </div>
     </div>
     <div class="cursor-pointer">
       @if (isLogin()){
-      <app-primary-button (btnClicked)="handleClick('cart')" label="Cart" />
+      <div>
+        <app-primary-button
+          (btnClicked)="handleClick('cart')"
+          [label]="`Cart ${cart.cart().length}`"
+          routerLink="/cart"
+        />
+      </div>
       } @else {
       <span>Login</span>
       }

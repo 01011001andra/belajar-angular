@@ -1,0 +1,8 @@
+<div class="max-w-6xl p-4 w-full mx-auto">
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+    @for (product of productList(); track product.id) {
+    <app-product-card [product]="product" />
+    <!-- (click)="" -->
+    }
+  </div>
+</div>
