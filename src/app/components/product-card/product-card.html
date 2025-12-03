@@ -23,8 +23,10 @@
 
     <div class="flex items-center justify-between w-full">
       <button
-        (click)="cartService.addToCart(product())"
-        class="border cursor-pointer hover:bg-yellow-500 border-yellow-400 py-2 rounded-lg text-sm bg-yellow-400 text-white w-full"
+        (click)="product().stock !== 0 ? cartService.addToCart(product()) : null"
+        [class]="`border  py-2 rounded-lg text-sm text-white w-full ${product().stock
+        ? 'bg-yellow-400 hover:bg-yellow-500 cursor-pointer'
+        : 'bg-gray-400  cursor-not-allowed'}`"
       >
         Add To Cart
       </button>
