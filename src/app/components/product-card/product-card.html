@@ -23,7 +23,7 @@
 
     <div class="flex items-center justify-between w-full">
       <button
-        (click)="product().stock !== 0 ? cartService.addToCart(product()) : null"
+        (click)="product().stock !== 0 ? cartService.handleCart(product(), 'increment') : null"
         [class]="`border  py-2 rounded-lg text-sm text-white w-full ${product().stock
         ? 'bg-yellow-400 hover:bg-yellow-500 cursor-pointer'
         : 'bg-gray-400  cursor-not-allowed'}`"

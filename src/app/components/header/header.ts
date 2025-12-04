@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { PrimaryButton } from '../primary-button/primary-button';
 import { Cart } from '../../services/cart';
 import { Router, RouterLink } from '@angular/router';
@@ -24,6 +24,15 @@ export class Header {
       path: '/products',
     },
   ];
+
+  totalInCart = computed(() => {
+    let total = 0;
+
+    this.cart.cart().forEach((element) => {
+      total = (element.total || 0) + total;
+    });
+    return total;
+  });
 
   get currentPath() {
     return this.router.url;

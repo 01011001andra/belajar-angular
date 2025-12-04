@@ -24,12 +24,28 @@
           <span>Rp {{ cart.price }}</span>
         </div>
       </div>
-      <div class="h-full flex justify-center items-center">
-        <button
-          class="bg-red-600 p-2 rounded-lg text-white cursor-pointer hover:bg-red-700 text-xs font-black"
-        >
-          Remove
-        </button>
+      <div class="h-full justify-center flex flex-col items-end">
+        <div class="flex gap-2 items-center">
+          <button
+            (click)="handleClick(cart, 'decrement')"
+            class="bg-red-600 size-7 flex items-center justify-center p-2 rounded-lg text-white cursor-pointer hover:bg-red-700 text-xs font-black"
+          >
+            -
+          </button>
+          <input
+            type="number"
+            class="w-12 border-2 rounded-lg border-gray-300"
+            (change)="handleChange($event, cart)"
+            [defaultValue]="cart.total"
+            [value]="cart.total"
+          />
+          <button
+            (click)="handleClick(cart, 'increment')"
+            class="bg-green-600 size-7 flex items-center justify-center p-2 rounded-lg text-white cursor-pointer hover:bg-green-700 text-xs font-black"
+          >
+            +
+          </button>
+        </div>
       </div>
     </div>
     }

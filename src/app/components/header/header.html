@@ -37,7 +37,7 @@
       <div>
         <app-primary-button
           (btnClicked)="handleClick('cart')"
-          [label]="`Cart ${cart.cart().length}`"
+          [label]="`Cart ${totalInCart()}`"
           routerLink="/cart"
         />
       </div>
